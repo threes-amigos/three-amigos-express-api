@@ -24,12 +24,12 @@ const show = (req, res) => {
 }
 
 const create = (req, res, next) => {
-  // console.log('this is req.body ', req.body)
-  console.log("req.body.question: ", req.body.question)
-  // console.log('this is req.question._survey ', req.question._survey)
-  console.log('req.body.user is ', req.body.user)
+  // // console.log('this is req.body ', req.body)
+  // console.log("req.body.question: ", req.body.question)
+  // // console.log('this is req.question._survey ', req.question._survey)
+  // console.log('req.body.user is ', req.body.user)
   const question = Object.assign(req.body.question, {
-    _owner: req.body.user._id,
+    _owner: req.user._id,
     _survey: req.body.question._survey
   })
   Question.create(question)
