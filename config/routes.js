@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = require('lib/wiring/routes')
 
@@ -9,7 +9,8 @@ module.exports = require('lib/wiring/routes')
 
 // standards RESTful routes
 .resources('examples')
-
+.resources('surveys')
+.resources('questions')
 // users of the app have special requirements
 .post('/sign-up', 'users#signup')
 .post('/sign-in', 'users#signin')
@@ -18,4 +19,3 @@ module.exports = require('lib/wiring/routes')
 .resources('users', { only: ['index', 'show'] })
 
 // all routes created
-;
