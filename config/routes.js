@@ -12,6 +12,7 @@ module.exports = require('lib/wiring/routes')
 .resources('surveys')
 .resources('questions')
 // users of the app have special requirements
+.get('/questionsbysurvey', 'questions#indexBySurvey')
 .post('/sign-up', 'users#signup')
 .post('/sign-in', 'users#signin')
 .delete('/sign-out/:id', 'users#signout')
