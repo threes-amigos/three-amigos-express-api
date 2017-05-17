@@ -26,6 +26,7 @@ const show = (req, res) => {
 const create = (req, res, next) => {
   console.log("req.body.survey: ", req.body.surveySchema)
   const survey = Object.assign(req.body.surveySchema, {
+  let survey = Object.assign(req.body.survey, {
     _owner: req.user._id,
   })
   Survey.create(survey)
