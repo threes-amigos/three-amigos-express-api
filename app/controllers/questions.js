@@ -3,7 +3,9 @@
 const controller = require('lib/wiring/controller')
 const models = require('app/models')
 const Question = models.question
+
 const mongoose = require('mongoose')
+
 const authenticate = require('./concerns/authenticate')
 const setUser = require('./concerns/set-current-user')
 const setModel = require('./concerns/set-mongoose-model')
@@ -18,11 +20,13 @@ const index = (req, res, next) => {
     .catch(next)
 }
 const indexBySurvey = (req, res, next) => {
-  // console.log(req.body.survey.id)
+  console.log("req.query.survey.id", req.query.survey.id)
   Question.find({ '_survey': [
-        mongoose.Types.ObjectId(req.body.survey.id)
+        // mongoose.Types.ObjectId(req.query.survey.id)
+        mongoose.Types.ObjectId(req.query.survey.id)
     ] })
     .then(questions => res.json({
+      // console.log("after then the questions: ", questions)
       questions: questions.map((e) =>
         e.toJSON({ virtuals: true, user: req.user })),
     }))
