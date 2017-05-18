@@ -1,4 +1,5 @@
 #!/bin/bash
+
 ID="591c84247cd6579770d5f234"
 API="http://localhost:4741"
 URL_PATH="/questionsbysurvey"
@@ -7,11 +8,10 @@ curl "${API}${URL_PATH}" \
   --include \
   --request GET \
   --header "Content-Type: application/json" \
-  --header "Authorization: Token token=${TOKEN}" \
+  --header "Authorization: Token token=${TOKEN}"
   --data '{
     "survey": {
       "id": "'"${ID}"'"
     }
   }'
-
 echo

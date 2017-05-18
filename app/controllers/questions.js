@@ -11,6 +11,7 @@ const setUser = require('./concerns/set-current-user')
 const setModel = require('./concerns/set-mongoose-model')
 
 const index = (req, res, next) => {
+  // console.log(req.body.survey.id)
   Question.find()
     .then(questions => res.json({
       questions: questions.map((e) =>
@@ -19,10 +20,15 @@ const index = (req, res, next) => {
     .catch(next)
 }
 const indexBySurvey = (req, res, next) => {
+
+  console.log("req.query.survey.id", req.query.survey.id)
   Question.find({ '_survey': [
-        mongoose.Types.ObjectId(req.body.survey.id)
+        // mongoose.Types.ObjectId(req.query.survey.id)
+        mongoose.Types.ObjectId(req.query.survey.id)
     ] })
     .then(questions => res.json({
+      // console.log("after then the questions: ", questions)
+
       questions: questions.map((e) =>
         e.toJSON({ virtuals: true, user: req.user })),
     }))
