@@ -42,7 +42,7 @@ const questionSchema = new mongoose.Schema({
 })
 
 questionSchema.virtual('avgScore').get(function () {
-  let avgScore = this.numberOfTimesAnswered / this.sumOfAnswers
+  let avgScore =  this.sumOfAnswers / this.numberOfTimesAnswered
   return avgScore
 })
 
